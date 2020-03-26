@@ -61,15 +61,15 @@ public class Main {
 		 * Menu de elección de implementación a usar
 		 */
         Scanner scan = new Scanner(System.in);
-        int heapType;
+        int pQueueType;
 		boolean isCorrect = false;
         while(!isCorrect) {
             System.out.println("Ingrese la implementacion de Heap que desea usar:");
             System.out.println("1. VectorHeap");
             System.out.println("2. PriorityQueue de JCF.");
             try {
-                heapType = Integer.valueOf(scan.nextLine());
-                if (heapType > 0 && heapType < 3) {
+                pQueueType = Integer.valueOf(scan.nextLine());
+                if (pQueueType > 0 && pQueueType < 3) {
                     isCorrect = true;
                 }
             } catch(Exception e) {
@@ -83,7 +83,7 @@ public class Main {
 		String fileName = "";
 		while (!isCorrect) {
             System.out.println("Escriba el nombre del archivo que va a leer");
-            System.out.println("Si presiona solo enter se escoge por default ('patients.txt'): ");
+            System.out.println("Si presiona solo enter se escoge por default ('pacientes.txt'): ");
 			fileName = scan.nextLine();
 			if (fileName.split(".").length < 1) {
                 isCorrect = false;
@@ -93,12 +93,16 @@ public class Main {
             }
 		}
 		if (fileName.equals("")) {
-			fileName = "patients.txt";
+			fileName = "pacientes.txt";
 		}
 		/**
 		 * Se lee el archivo de texto
 		 */
-        ArrayList<String> patients = textReader(fileName);
+        ArrayList<String> patientsList = textReader(fileName);
+        /**
+         * Se implementa el factory para saber que tipo de Priority usar
+         */
+        PriorityQueueFactory<Patient<String>> pQueueFactory = new PriorityQueueFactory<>();
         
 		scan.close();
 	}
