@@ -2,3 +2,6 @@ Juan Perez, fractura de pierna, C
 Maria Ramirez, apendicitis, A
 Lorenzo Toledo, chikunguya, E
 Carmen Sarmientos, dolores de parto, B
+Rodolfo Jimenez, infarto, A
+Lourdes Patzan, infeccion de pierna, B
+Carlos Morales, posible coronavirus, B
