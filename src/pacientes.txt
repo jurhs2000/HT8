@@ -5,3 +5,6 @@ Carmen Sarmientos, dolores de parto, B
 Rodolfo Jimenez, infarto, A
 Lourdes Patzan, infeccion de pierna, B
 Carlos Morales, posible coronavirus, B
+Jose Noj, diarrea, D
+Ines Morales, quemadura de primer grado, C
+Jennifer Pineda, ligamento desgarrado, E

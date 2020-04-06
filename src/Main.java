@@ -1,14 +1,17 @@
-
 /**
  * 
  * Universidad del Valle de Guatemala
  * Algoritmos y estructuras de datos
  * Hoja de trabajo 8
- * 03/04/2020
+ * 03/04/2020 - 05/04/2020
  * 
- * Hoja de Trabajo 8 Algoritmos y Estructuras de Datos. Implementación de Priority Queue con Heaps
+ * Hoja de Trabajo 8 Algoritmos y Estructuras de Datos.
+ * Implementación de Priority Queue con Heaps, en este caso, Min Heap
+ * Tambien se implementa el patron de diseño Factory para poder implementar
+ * el PriorityQueue de Java Collection Framework
  * 
- * Programa para atención de pacientes con prioridad de emergencia
+ * Programa para atención de pacientes con prioridad de emergencia.
+ * Permite atender primero a los pacientes con mayor prioridad.
  * 
  * @author Julio Herrera 19402
  * @version 1.0
@@ -19,7 +22,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class Main {
@@ -118,8 +120,8 @@ public class Main {
 			name = (name.substring(0, 1).equals(" ")) ? name.substring(1) : name;
 			String symptom = separated[1];
 			symptom = (symptom.substring(0, 1).equals(" ")) ? symptom.substring(1) : symptom;
-			String priority = separated[2].replaceAll(" ", "").toUpperCase() + cont;
-			pQueue.add(new Patient(priority, symptom, name));
+			String priority = separated[2].replaceAll(" ", "").toUpperCase();
+			pQueue.add(new Patient(priority, symptom, name, cont));
 			cont++;
 		}
 		/**
@@ -161,7 +163,7 @@ public class Main {
 					String symptom = scan.nextLine();
 					System.out.println("Ingrese la prioridad del paciente (Solo las letras: A, B, C, D, E)");
 					String priority = scan.nextLine();
-					pQueue.add(new Patient(priority.substring(0, 1) + cont, symptom, name));
+					pQueue.add(new Patient(priority.substring(0, 1), symptom, name, cont));
 					cont++;
 				break;
 				case 4:
@@ -172,6 +174,9 @@ public class Main {
 				break;
 			}
 			System.out.println();
+			/**
+			 * Si ya no quedan pacientes en la cola
+			 */
 			if (pQueue.isEmpty()) {
 				while (!isCorrect) {
 					System.out.println("Ya no hay pacientes en la cola. ¿Desea agregar uno nuevo?");
@@ -190,7 +195,7 @@ public class Main {
 							String symptom = scan.nextLine();
 							System.out.println("Ingrese la prioridad del paciente (Solo las letras: A, B, C, D, E)");
 							String priority = scan.nextLine();
-							pQueue.add(new Patient(priority.substring(0, 1) + cont, symptom, name));
+							pQueue.add(new Patient(priority.substring(0, 1), symptom, name, cont));
 							cont++;
 						break;
 						case 2:
